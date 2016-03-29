@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
   def index
-  	@movies = ['batman', 'superman', 'i robot']
+  	@movies = Movie.all
   end
 end
