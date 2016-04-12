@@ -1,15 +1,15 @@
-<h1>Movies</h1>
+<h1><%= pluralize(@movies.size, "Movie") %></h1>
 
 <ul>
   <% @movies.each do |movie| %>	
   	<li>
   		<strong><%= movie.title %></strong>
   		<%= movie.title %> (<%= movie.rating %>):
-  		<%= number_to_currency(movie.total_gross) %>
+  		<%= format_total_gross(movie) %>
   		<br />
-  		Description: <%= movie.description %>
+  		Description: <%= truncate(movie.description, length: 40, separator: ' ') %>
   		<br />
-  		Release Date: <%= movie.released_on %>
+  		Release Date: <%= time_ago_in_words(movie.released_on) %> ago
 
   	</li>
   <% end %>
